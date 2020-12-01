@@ -1,7 +1,10 @@
 package com.example.androidadvancedproject.Worker;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.location.Location;
+import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -13,6 +16,7 @@ import androidx.work.WorkerParameters;
 import com.example.androidadvancedproject.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -60,6 +64,10 @@ public class LocationWorker extends Worker {
 						super.onLocationResult(locationResult);
 					}
 				};
+				LocationRequest mLocationRequest = new LocationRequest();
+				mLocationRequest.setInterval(10000);
+				mLocationRequest.setFastestInterval(5000);
+				mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 				try {
 					mFusedLocationClient
 							.getLastLocation()
@@ -70,6 +78,15 @@ public class LocationWorker extends Worker {
 										mLocation = task.getResult();
 										Log.d(TAG, "Location : " + mLocation);
 
+										if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+											CharSequence name = mContext.getString(R.string.app_name);
+											String description = mContext.getString(R.string.app_name);
+											int importance = NotificationManager.IMPORTANCE_DEFAULT;
+											NotificationChannel channel = new NotificationChannel(mContext.getString(R.string.app_name), name, importance);
+											channel.setDescription(description);
+											NotificationManager notificationManager = mContext.getSystemService(NotificationManager.class);
+											notificationManager.createNotificationChannel(channel);
+										}
 										NotificationCompat.Builder builder = new NotificationCompat.Builder(mContext, mContext.getString(R.string.app_name))
 												.setSmallIcon(android.R.drawable.ic_menu_mylocation)
 												.setContentTitle("New Location Update")
@@ -82,10 +99,17 @@ public class LocationWorker extends Worker {
 									} else {
 										Log.w(TAG, "Failed to get location.");
 									}
+
 								}
 							});
 				} catch (SecurityException securityException) {
 					Log.e(TAG, "Lost location permission." + securityException);
+				}
+				try {
+					mFusedLocationClient.requestLocationUpdates(mLocationRequest, null);
+				} catch (SecurityException unlikely) {
+					//Utils.setRequestingLocationUpdates(this, false);
+					Log.e(TAG, "Lost location permission. Could not request updates. " + unlikely);
 				}
 			}
 		} catch (ParseException ignored) {
