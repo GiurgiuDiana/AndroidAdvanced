@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6CF9A"
+    android:background="@color/colorBackground"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/title"
         android:text="@string/title"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,68 +22,62 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="373dp"
-        android:layout_height="296dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.456"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_image"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.329"
-        app:srcCompat="@drawable/inside" />
+        app:layout_constraintStart_toStartOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:srcCompat="@drawable/inside"
+        android:contentDescription="@string/lodge" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="98dp"
+        android:layout_width="132dp"
         android:layout_height="52dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginBottom="80dp"
-        android:background="#F4B056"
-        android:text="View lodgings"
-        android:textAllCaps="false"
+        android:background="@color/colorButtonBackground"
         android:onClick="OpenLodgingsExisting"
-        android:textColor="#0B0600"
+        android:text="@string/view_lodgings"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBlack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.775"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.702"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.213" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="98dp"
-        android:layout_height="52dp"
+        android:layout_width="145dp"
+        android:layout_height="49dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginBottom="80dp"
-        android:background="#F4B056"
+        android:layout_marginTop="60dp"
+        android:background="@color/colorButtonBackground"
         android:onClick="OpenActivity_AddLodging"
-        android:text="Create Lodging"
+        android:text="@string/add_lodging"
         android:textAllCaps="false"
-        android:textColor="#0B0600"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.031"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintBottom_toStartOf="@id/button4"
+        app:layout_constraintEnd_toEndOf="@id/button4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintRight_toLeftOf="@id/button2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="157dp"
-        android:layout_marginTop="162dp"
-        android:layout_marginEnd="155dp"
-        android:layout_marginBottom="82dp"
-        android:text="Start Trip"
+        android:background="@color/colorButtonBackground"
+        android:text="@string/start_trip"
+        android:textColor="@color/colorBlack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintHorizontal_bias="0.229"
+        app:layout_constraintLeft_toRightOf="@id/button3"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.664" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
