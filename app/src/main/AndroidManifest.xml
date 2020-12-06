@@ -10,10 +10,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".presentation.LodgeApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListLodgings"></activity>
-        <activity android:name=".AddLodging" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".presentation.ListLodgings"
+            android:screenOrientation="sensor">
+
+        </activity>
+        <activity android:name=".presentation.AddLodging" />
+        <activity android:name=".presentation.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -108,7 +108,6 @@ public class LocationWorker extends Worker {
 				try {
 					mFusedLocationClient.requestLocationUpdates(mLocationRequest, null);
 				} catch (SecurityException unlikely) {
-					//Utils.setRequestingLocationUpdates(this, false);
 					Log.e(TAG, "Lost location permission. Could not request updates. " + unlikely);
 				}
 			}
