@@ -16,7 +16,7 @@ import okhttp3.OkHttpClient;
 public interface LodgeAPI {
 
      final  String BASE_URL="https://lodge-df482-default-rtdb.europe-west1.firebasedatabase.app/";
-    @GET("lodge-df482-default-rtdb.json")
+    @GET("lodges.json")
     Call<List<LodgeItemDTO>> getItems();
 
     static LodgeAPI createApi() {

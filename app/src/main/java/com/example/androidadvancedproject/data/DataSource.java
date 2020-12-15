@@ -11,7 +11,7 @@ public class DataSource implements LodgeItemRepository{
     @Override
     public List<LodgeItemDTO> getItems() {
         lodgeItemDtos = Arrays.asList(
-                new LodgeItemDTO(2,"Baisoara", "Raducu",new Timestamp((long)1607851180),"654321","Baisoara")
+                new LodgeItemDTO(2,"Baisoara", "Raducu","2020-11-12 01:02:03.123456789","654321","Baisoara")
 
         );
         return lodgeItemDtos;

@@ -22,7 +22,6 @@ public class RemoteDataSource implements LodgeItemRepository {
     public List<LodgeItemDTO> getItems() {
         try {
             Response<List<LodgeItemDTO>> response = lodgeAPI.getItems().execute();
-           Log.w(TAG,response.body().toString()) ;
             return response.body();
         } catch (IOException e) {
             Log.w(TAG, "Something went wrong", e);

@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.androidadvancedproject.data.LodgeItemDTO;
 import com.example.androidadvancedproject.data.LodgeItemRepository;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -30,13 +31,11 @@ public class LodgeMediator {
     public LiveData<List<LodgeItem>> getItems() {
         ArrayList<LodgeItem> items = new ArrayList<>();
         for (LodgeItemDTO dto : localRepository.getItems()) {
-            Log.w(TAG,dto.getLodgeName());
-            items.add(new LodgeItem(dto.getLodgeId(), dto.getLodgeName(),dto.getLodgeOwner(),dto.getLodgeAvailability(),dto.getLodgeNumber(),dto.getLodgeLocation()));
+            items.add(new LodgeItem(dto.getLodgeId(), dto.getLodgeName(),dto.getLodgeOwner(),Timestamp.valueOf(dto.getLodgeAvailability()),dto.getLodgeNumber(),dto.getLodgeLocation()));
         }
         executorService.execute(() -> {
             for (LodgeItemDTO dto : remoteRepository.getItems()) {
-                Log.w(TAG,dto.getLodgeName());
-                items.add(new LodgeItem(dto.getLodgeId(), dto.getLodgeName(),dto.getLodgeOwner(),dto.getLodgeAvailability(),dto.getLodgeNumber(),dto.getLodgeLocation()));
+                items.add(new LodgeItem(dto.getLodgeId(), dto.getLodgeName(),dto.getLodgeOwner(),Timestamp.valueOf(dto.getLodgeAvailability()),dto.getLodgeNumber(),dto.getLodgeLocation()));
             }
             this.liveItems.postValue(items);
         });

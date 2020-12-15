@@ -1,18 +1,19 @@
 package com.example.androidadvancedproject.domain;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class LodgeItem {
     private final int lodgeId;
     private final String lodgeName;
     private final String lodgeOwner;
-    private final Date lodgeAvailability;
+    private final Timestamp lodgeAvailability;
     private final String lodgeNumber;
     private final String lodgeLocation;
 
 
 
-    public LodgeItem(int lodgeId, String lodgeName, String lodgeOwner, Date lodgeAvailability, String lodgeNumber, String lodgeLocation) {
+    public LodgeItem(int lodgeId, String lodgeName, String lodgeOwner, Timestamp lodgeAvailability, String lodgeNumber, String lodgeLocation) {
         this.lodgeId = lodgeId;
         this.lodgeName = lodgeName;
         this.lodgeOwner = lodgeOwner;
@@ -33,7 +34,7 @@ public class LodgeItem {
         return lodgeOwner;
     }
 
-    public Date getLodgeAvailability() {
+    public Timestamp getLodgeAvailability() {
         return lodgeAvailability;
     }
 
