@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidAdvancedProiect</string>
+    <string name="title">Cabane</string>
+    <string name="view_lodgings">Lista cabane</string>
+    <string name="add_lodging">Creaza Cabana</string>
+    <string name="start_trip">Excursie</string>
+    <string name="lodge">Cabana</string>
+    <string name="location">Locatie</string>
+    <string name="lodgeowner">Proprietar</string>
+    <string name="number">Numar</string>
+    <string name="save">Save</string>
+    <string name="opening_date">Deschidere</string>
+    <string name="lodge_name"></string>
+    <string name="owner">Proproetar</string>
+</resources>
