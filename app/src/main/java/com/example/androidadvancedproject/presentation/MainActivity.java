@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_CODE = 200;
     private static final String TAG = "Location";
     private FirebaseAnalytics mFirebaseAnalytics;
+    public static final int NOTIFICATION_LAUNCH_CODE = 485;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

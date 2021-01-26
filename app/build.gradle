@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -78,10 +79,15 @@ dependencies {
     // optional - Test helpers for LiveData
     testImplementation "androidx.arch.core:core-testing:$arch_version"
 
-    implementation 'com.google.android.gms:4.0.0'
-
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation 'com.google.firebase:firebase-core:16.0.6'
+
+    implementation platform('com.google.firebase:firebase-bom:26.2.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-crashlytics'
+
+    implementation 'com.google.android.gms:play-services-location:17.1.0'
+
 
 
 
