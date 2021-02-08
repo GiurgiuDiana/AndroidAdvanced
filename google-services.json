@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "780286529072",
+    "firebase_url": "https://lodge-df482-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "lodge-df482",
+    "storage_bucket": "lodge-df482.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780286529072:android:b1eb4848a7c8466314a7f5",
+        "android_client_info": {
+          "package_name": "com.andoidadvanced.lodge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780286529072-6lh96au5etlknumlee0djfjlsptbo7g9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK2lmm2qnQAI7Cl0oMMbO3GZfkdBv9m44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780286529072-6lh96au5etlknumlee0djfjlsptbo7g9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

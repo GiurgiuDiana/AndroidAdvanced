@@ -1,14 +1,6 @@
 package com.example.androidadvancedproject.domain;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
-
-import com.example.androidadvancedproject.data.LodgeItemDTO;
-import com.example.androidadvancedproject.data.LodgeItemRepository;
-
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class FetchLodgeItemsUseCase {

@@ -21,7 +21,6 @@ import com.example.androidadvancedproject.domain.LodgeWorker;
 import java.util.List;
 
 public class LodgeItemModel extends ViewModel {
-    public static final String LOG_TAG = "heavy_tag";
     private final WorkManager workManager;
     private final FetchLodgeItemsUseCase fetchItemsUseCase;
     public ObservableArrayList<LodgeItem> items = new ObservableArrayList<>();
@@ -31,27 +30,4 @@ public class LodgeItemModel extends ViewModel {
         LiveData<List<LodgeItem>> liveItems = fetchItemsUseCase.execute();
         liveItems.observeForever(heavyItems -> this.items.addAll(heavyItems));
     }
-
-
-    private void launchWorker() {
-        Constraints constraints = new Constraints.Builder()
-                .setRequiredNetworkType(NetworkType.METERED)
-                .build();
-
-        Data inputData = new Data.Builder()
-                .putString("type", "get")
-                .build();
-
-        OneTimeWorkRequest request = new OneTimeWorkRequest.Builder(LodgeWorker.class)
-                .setInputData(inputData)
-                .setConstraints(constraints)
-                .build();
-
-        workManager.beginUniqueWork(
-                "some-heavy-work",
-                ExistingWorkPolicy.APPEND,
-                request)
-                .enqueue();
-    }
-
 }

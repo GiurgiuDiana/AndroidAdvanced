@@ -1,9 +1,5 @@
 package com.example.androidadvancedproject.data;
 
-import com.google.gson.annotations.SerializedName;
-
-import java.sql.Timestamp;
-import java.util.Date;
 
 public class LodgeItemDTO {
     private final int lodgeId;

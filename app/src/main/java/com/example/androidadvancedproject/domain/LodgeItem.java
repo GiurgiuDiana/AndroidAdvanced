@@ -1,7 +1,6 @@
 package com.example.androidadvancedproject.domain;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class LodgeItem {
     private final int lodgeId;

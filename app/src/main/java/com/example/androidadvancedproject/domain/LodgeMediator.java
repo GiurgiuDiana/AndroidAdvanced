@@ -1,7 +1,5 @@
 package com.example.androidadvancedproject.domain;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -13,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import timber.log.Timber;
 
 public class LodgeMediator {
     private static final String TAG = "mediator";
@@ -39,6 +39,8 @@ public class LodgeMediator {
             }
             this.liveItems.postValue(items);
         });
+        Timber.tag(TAG).d("Items ADDED ");
+
 
         return liveItems;
     }

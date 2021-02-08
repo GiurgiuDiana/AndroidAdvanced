@@ -8,7 +8,6 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidadvancedproject.R;
-import com.example.androidadvancedproject.databinding.ActivityListLodgingsBinding;
 import com.example.androidadvancedproject.databinding.ListItemBinding;
 import com.example.androidadvancedproject.domain.LodgeItem;
 

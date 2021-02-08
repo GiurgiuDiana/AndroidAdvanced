@@ -12,12 +12,16 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import okhttp3.OkHttpClient;
+import retrofit2.http.POST;
 
 public interface LodgeAPI {
 
      final  String BASE_URL="https://lodge-df482-default-rtdb.europe-west1.firebasedatabase.app/";
     @GET("lodges.json")
     Call<List<LodgeItemDTO>> getItems();
+
+   // @POST("lodges.json")
+
 
     static LodgeAPI createApi() {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
@@ -33,4 +37,5 @@ public interface LodgeAPI {
                 .build()
                 .create(LodgeAPI.class);
     }
+
 }

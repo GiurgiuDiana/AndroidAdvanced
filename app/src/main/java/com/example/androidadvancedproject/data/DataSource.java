@@ -1,9 +1,7 @@
 package com.example.androidadvancedproject.data;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
+
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 public class DataSource implements LodgeItemRepository{

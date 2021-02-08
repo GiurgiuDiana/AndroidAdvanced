@@ -4,5 +4,6 @@ import java.util.List;
 
 public interface LodgeItemRepository {
     List<LodgeItemDTO> getItems();
+    //void  addLodge(LodgeItemDTO lodge);
 
 }
