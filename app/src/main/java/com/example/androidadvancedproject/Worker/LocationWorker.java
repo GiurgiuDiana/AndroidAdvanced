@@ -1,10 +1,7 @@
 package com.example.androidadvancedproject.Worker;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.location.Location;
-import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -13,11 +10,11 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
-import com.example.androidadvancedproject.Notification.LodgeNotificationFcatory;
 import com.example.androidadvancedproject.R;
-
-import com.google.android.gms.location.*;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
@@ -26,9 +23,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
-
-import timber.log.Timber;
 
 public class LocationWorker extends Worker {
 
@@ -64,10 +60,6 @@ public class LocationWorker extends Worker {
 						super.onLocationResult(locationResult);
 					}
 				};
-				LocationRequest mLocationRequest = new LocationRequest();
-				mLocationRequest.setInterval(10000);
-				mLocationRequest.setFastestInterval(5000);
-				mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 				try {
 					mFusedLocationClient
 							.getLastLocation()
@@ -76,31 +68,24 @@ public class LocationWorker extends Worker {
 								public void onComplete(@NonNull Task<Location> task) {
 									if (task.isSuccessful() && task.getResult() != null) {
 										mLocation = task.getResult();
-										Timber.tag(TAG).d("Location : " + mLocation);
-										NotificationManager notificationManager = (NotificationManager)
-												mContext.getSystemService(NotificationManager.class);
-										notificationManager.notify(LodgeNotificationFcatory.HELLO_NOTIFICATION_ID,
-												LodgeNotificationFcatory.createProcessingWorkNotification(mContext,Double.toString(mLocation.getLatitude()),Double.toString( mLocation.getLongitude())));
+										Log.d(TAG, "Location : " + mLocation);
+
+										NotificationCompat.Builder builder = new NotificationCompat.Builder(mContext, mContext.getString(R.string.app_name))
+												.setSmallIcon(android.R.drawable.ic_menu_mylocation)
+												.setContentTitle("New Location Update")
+												.setContentText("lat" + (Double.toString(mLocation.getLatitude()))+"long " +(Double.toString( mLocation.getLongitude())))
+												.setPriority(NotificationCompat.PRIORITY_DEFAULT) ;
+												NotificationManagerCompat notificationManager = NotificationManagerCompat.from(mContext);
+										notificationManager.notify(1001, builder.build());
+
 										mFusedLocationClient.removeLocationUpdates(mLocationCallback);
 									} else {
-									//	Log.w(TAG, "Failed to get location.");
-										Timber.tag(TAG).d("Failed to get location.");
-
+										Log.w(TAG, "Failed to get location.");
 									}
-
 								}
 							});
 				} catch (SecurityException securityException) {
-					//Log.e(TAG, "Lost location permission." + securityException);
-					Timber.tag(TAG).e("Lost location permission." + securityException);
-
-				}
-				try {
-					mFusedLocationClient.requestLocationUpdates(mLocationRequest, null);
-				} catch (SecurityException unlikely) {
-					//Log.e(TAG, "Lost location permission. Could not request updates. " + unlikely);
-					Timber.tag(TAG).e("Lost location permission. Could not request updates. " + unlikely);
-
+					Log.e(TAG, "Lost location permission." + securityException);
 				}
 			}
 		} catch (ParseException ignored) {
