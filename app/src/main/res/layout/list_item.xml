@@ -1,18 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:background="#F6CF9A"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
 
-    android:padding="10dp">
+        <variable
+            name="model"
+            type="com.example.androidadvancedproject.domain.LodgeItem" />
+    </data>
 
-    <TextView
-        android:id="@+id/LodgeName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:textSize="20sp"/>
 
-</LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="83dp">
+
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:text="@{model.lodgeName}"
+            android:textSize="25dp"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Name" />
+
+
+        <TextView
+            android:id="@+id/owner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@{model.lodgeOwner}"
+            android:textSize="18dp"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Owner" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="28dp"
+            android:text="@{model.lodgeLocation}"
+            android:textSize="20dp"
+            app:layout_constraintRight_toLeftOf="parent"
+
+            android:textColor="@color/colorBlack"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/name"
+            app:layout_constraintStart_toEndOf="@id/name"
+            tools:text="Location" />
+
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{model.lodgeNumber}"
+            android:textSize="20dp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginStart="45dp"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@id/name"
+            app:layout_constraintStart_toEndOf="@id/owner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="324dp"
+            tools:layout_editor_absoluteY="52dp"
+            tools:text="number" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
