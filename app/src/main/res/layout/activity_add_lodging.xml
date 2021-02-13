@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
 
-    tools:context=".presentation.AddLodging">
+    tools:context=".presentation.View.AddLodging">
 
     <EditText
         android:id="@+id/editTextTextPersonName5"
