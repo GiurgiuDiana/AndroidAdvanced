@@ -16,19 +16,19 @@
         android:supportsRtl="true"
         android:name=".presentation.LodgeApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.ListLodgings"
+        <activity android:name=".presentation.View.ListLodgings"
             android:screenOrientation="sensor">
 
         </activity>
-        <activity android:name=".presentation.AddLodging" />
-        <activity android:name=".presentation.MainActivity">
+        <activity android:name=".presentation.View.AddLodging" />
+        <activity android:name=".presentation.View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".LodgeService" />
+        <service android:name=".presentation.LodgeService" />
 
     </application>
 

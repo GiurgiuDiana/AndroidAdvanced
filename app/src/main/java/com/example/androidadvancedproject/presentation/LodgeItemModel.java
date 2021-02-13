@@ -1,22 +1,12 @@
 package com.example.androidadvancedproject.presentation;
 
-import android.util.Log;
-
-import androidx.annotation.StringRes;
 import androidx.databinding.ObservableArrayList;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
-import androidx.work.Constraints;
-import androidx.work.Data;
-import androidx.work.ExistingWorkPolicy;
-import androidx.work.NetworkType;
-import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
-import com.example.androidadvancedproject.R;
 import com.example.androidadvancedproject.domain.FetchLodgeItemsUseCase;
 import com.example.androidadvancedproject.domain.LodgeItem;
-import com.example.androidadvancedproject.domain.LodgeWorker;
 
 import java.util.List;
 
@@ -24,6 +14,7 @@ public class LodgeItemModel extends ViewModel {
     private final WorkManager workManager;
     private final FetchLodgeItemsUseCase fetchItemsUseCase;
     public ObservableArrayList<LodgeItem> items = new ObservableArrayList<>();
+
     public LodgeItemModel(WorkManager workManager, FetchLodgeItemsUseCase fetchItemsUseCase) {
         this.workManager = workManager;
         this.fetchItemsUseCase = fetchItemsUseCase;

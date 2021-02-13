@@ -1,23 +1,15 @@
 package com.example.androidadvancedproject.presentation;
 
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModel;
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
-import com.example.androidadvancedproject.Worker.LocationWorker;
+
+import com.example.androidadvancedproject.domain.LodgeWorker;
+import com.example.androidadvancedproject.domain.Worker.LocationWorker;
 
 import java.util.concurrent.TimeUnit;
-
-import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
-import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 public class MainScreenViewModel extends ViewModel {
     public static final String TAG = "mainScreen tag";
